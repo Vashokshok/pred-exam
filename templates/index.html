@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+<h2>Страница Автомобилей</h2>
+
+{% for dealer in dealers %}
+<div>
+    <h3>{{dealer.name}}</h3>
+    <p> {{dealer.city}} - {{dealer.address}}</p>
+</div>
+{% endfor %}
+<a href="{{ url_for('add_dealer') }}">Добавить нового Диллера</a>
+
+</body>
+</html>

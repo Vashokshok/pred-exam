@@ -11,7 +11,7 @@ class CarDealer(Base):
     city = Column(String, nullable=False)
     address = Column(String, nullable=False)
 
-    car_id = relationship('Car', back_populates='carr')
+    cars = relationship('Car', back_populates='dealer')
 
 
 class Car(Base):
@@ -24,4 +24,4 @@ class Car(Base):
     price = Column(Float, nullable=True)
     dealer_id = Column(Integer, ForeignKey('cardealers.id', ondelete='CASCADE'), nullable=False)
 
-    carr = relationship('CarDealer', back_populates='car_id')
+    dealer = relationship('CarDealer', back_populates='cars')
