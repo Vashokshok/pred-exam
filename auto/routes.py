@@ -4,7 +4,7 @@ from table.database import session
 
 car_bp = Blueprint('cars', __name__, template_folder='templates')
 
-@car_bp.route('/', methods=['GET', 'POST'])
+@car_bp.route('/add_auto', methods=['GET', 'POST'])
 def add_auto():
     if request.method == 'POST':
         name = request.form.get('name')
@@ -15,3 +15,11 @@ def add_auto():
         session.commit()
         return redirect(url_for('main'))
     return render_template('add_dealers.html')
+
+
+@car_bp.route('/delete/<int:id>', methods=['POST'])
+def auto_delete(id):
+    auto = CarDealer.query.filter_by(id=id).first()
+    session.delete(auto)
+    session.commit()
+    return redirect(url_for('main'))

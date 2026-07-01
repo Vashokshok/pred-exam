@@ -12,9 +12,13 @@
 <div>
     <h3>{{dealer.name}}</h3>
     <p> {{dealer.city}} - {{dealer.address}}</p>
+
+    <a href="{{ url_for('cars.add_auto') }}">Добавить нового Диллера</a>
+    <a href="{{ url_for('cars.auto_delete', id=dealer.id) }}">Удалить машину</a>
+
 </div>
 {% endfor %}
-<a href="{{ url_for('cars.add_auto') }}">Добавить нового Диллера</a>
+
 
 </body>
 </html>
