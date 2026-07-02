@@ -17,9 +17,14 @@ def add_auto():
     return render_template('add_dealers.html')
 
 
-@car_bp.route('/delete/<int:id>', methods=['POST'])
+@car_bp.route('/delete/<int:id>', methods=['GET', 'POST'])
 def auto_delete(id):
-    auto = CarDealer.query.filter_by(id=id).first()
+    auto = session.query(CarDealer).filter_by(id=id).first()
     session.delete(auto)
     session.commit()
     return redirect(url_for('main'))
+
+@car_bp.route('/read/<int:id>', )
+def dealer_detail(id):
+    dealer_one = session.query(CarDealer).filter_by(id=id).first()
+    return render_template('dealer_detail.html', dealer_one=dealer_one)

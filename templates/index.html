@@ -2,23 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Главная страница</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
 </head>
 <body>
-<h2>Страница Автомобилей</h2>
+<h2>Страница Автомобилей</h2><br>
 
 {% for dealer in dealers %}
-<div>
-    <h3>{{dealer.name}}</h3>
+<div class="myy">
+    <h4><a href="{{ url_for('cars.dealer_detail', id=dealer.id) }}">{{dealer.name}}</a></h4>
     <p> {{dealer.city}} - {{dealer.address}}</p>
-
-    <a href="{{ url_for('cars.add_auto') }}">Добавить нового Диллера</a>
+    <a href="{{ url_for('cars.add_auto') }}">Добавить нового Диллера</a><br>
     <a href="{{ url_for('cars.auto_delete', id=dealer.id) }}">Удалить машину</a>
+     <hr>
+
 
 </div>
 {% endfor %}
 
-
+<script src="https://jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
